@@ -1,0 +1,28 @@
+{
+  "name": "time-tracking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chernrus/time-tracking.git"
+  },
+  "author": "Ruslan Chernov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chernrus/time-tracking/issues"
+  },
+  "homepage": "https://github.com/chernrus/time-tracking#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "path": "^0.12.7",
+    "webpack": "^4.29.1",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
