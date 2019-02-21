@@ -1,9 +1,11 @@
 import mediator from './Mediator';
-import TimeTask from './TimeTask';
+
+import Fabric from './Fabric';
 import Mediator from './Mediator';
 
 var TimeTracker = (function() {
-  var _data = [],
+  var fabric = new Fabric(),
+    _data = [],
     _addBtn = null,
     _cleanBtn = null,
     _calcBtn = null,
@@ -35,12 +37,19 @@ var TimeTracker = (function() {
     })
   };
 
+  function saveData() {
+    window.localStorage.setItem('timeTasks', JSON.stringify(_data));
+  }
+
   function renderTimeList() {
-    console.log(_data);
+    _data.map((item) => {
+      var task = fabric.create('task', item);
+      _tasksContainer.appendChild(task.container);
+    })
   };
 
   function loadData() {
-    getData('data1')
+    getData('timeTasks')
       .then(
         response => response,
         error => []
@@ -53,17 +62,35 @@ var TimeTracker = (function() {
       );
   };
 
-  function addTask() {
-    var task = new TimeTask();
+  function createTask() {
+    var task = fabric.create('task');
     _tasksContainer.appendChild(task.container);
   };
 
-  function addTaskInStorage() {
+  function saveTask(task) {
+    var isValue = false;
+    _data.map((item)=>{
+      if(item.id === task.id) {
+        item.start = task.start;
+        item.end = task.end;
+        item.name = task.name;
+        isValue = true;
+      }
+    });
 
+    if(!isValue) { _data.push(task) };
+
+    saveData();
   }
 
-  function changeTaskInStorage(task) {
-    console.log(task);
+  function deleteTaskInStorage({ id }) {
+    _data.forEach((item, i) => {
+      if(item.id === id) {
+        _data.splice(i, 1);
+      }
+    });
+
+    saveData();
   }
 
   function calculateTime() {
@@ -72,6 +99,9 @@ var TimeTracker = (function() {
 
   function cleanTaskList() {
     console.log('clean');
+    window.localStorage.removeItem('timeTasks');
+
+    _tasksContainer.innerHTML = '';
   };
 
   function init (modules) {
@@ -83,15 +113,14 @@ var TimeTracker = (function() {
     _totalLine = document.querySelector('.calculator__total-num');
     _tasksContainer = document.querySelector('.calculator__time-list');
 
-    _addBtn.onclick = addTask;
+    _addBtn.onclick = createTask;
     _calcBtn.onclick = calculateTime;
     _cleanBtn.onclick = cleanTaskList;
 
     loadData();
 
-    Mediator.subscribe('change task', changeTaskInStorage);
-    changeTaskInStorage
-
+    Mediator.subscribe('save task', saveTask);
+    Mediator.subscribe('delete task', deleteTaskInStorage);
   };
 
   return {
