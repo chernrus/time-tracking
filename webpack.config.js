@@ -15,5 +15,13 @@ module.exports = {
         files: ['./dist/*.html'],
         server: { baseDir: ['dist'] }
       })
-    ]
+    ],
+    module:{
+        rules:[
+            {
+                test:/\.css$/,
+                use:['style-loader','css-loader']
+            }
+       ]
+    },
 };

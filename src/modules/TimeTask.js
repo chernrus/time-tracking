@@ -4,14 +4,14 @@ import Timer from './Timer';
 
 class TimeTask {
   constructor({start, end, name, id}) {
-    var template = `<input type="text" class="calculator__time-input startTime">
+    var template = `<input type="time" class="calculator__time-input startTime">
       <button type="button" class="calculator__time-item-button startBtn">+</button>
-      <input type="text" class="calculator__time-input endTime">
+      <input type="time" class="calculator__time-input endTime" placeholder="hh:mm" pattern="${`(1[0-2]|0[1-9])\/(1[5-9]|2\d)`}">
       <button type="button" class="calculator__time-item-button endBtn">+</button>
       <input type="text" class="calculator__task-input taskInput">
       <button type="button" class="calculator__time-delete-button deleteBtn">X</button>`;
 
-      console.log(start, end, name, id);
+    console.log(start, end, name, id);
     this.container = document.createElement('div');
     this.id = id || uuidv4();
     this.start = start || Timer.getTime('hh:mm');
