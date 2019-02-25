@@ -1,7 +1,7 @@
-import mediator from './Mediator';
-
 import Fabric from './Fabric';
 import Mediator from './Mediator';
+import CalcTime from './CalculateTime';
+
 
 var TimeTracker = (function() {
   var fabric = new Fabric(),
@@ -95,6 +95,7 @@ var TimeTracker = (function() {
 
   function calculateTime() {
     console.log('calc');
+    CalcTime.calculate(_data);
   };
 
   function cleanTaskList() {

@@ -1,7 +1,6 @@
 import './styles/index.css';
 import mediator from './modules/Mediator';
 import TimeTracker from './modules/app';
-import mask from './lib/mask';
 
 
 function kek(data) {
