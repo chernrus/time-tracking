@@ -37,6 +37,11 @@ class TimeTracker extends Component {
       );
   }
 
+  saveData(data) {
+    window.localStorage.setItem('timeTasks', JSON.stringify(data));
+    this.setState({ data });
+  }
+
   calculateTasks() {
     console.log('Calculate all tasks');
   }
@@ -64,6 +69,22 @@ class TimeTracker extends Component {
 
   changeTask( task ) {
     console.log('Cange Task', task);
+    const { data } = this.state;
+    let isValue = false;
+
+    data.map((item)=>{
+      if(item.id === task.id) {
+        item.start = task.start;
+        item.end = task.end;
+        item.name = task.name;
+        item.period = task.epriod;
+        isValue = true;
+      }
+    });
+
+    if(!isValue) { data.push(task) };
+
+    this.saveData(data);
   }
 
   removeTask( id ) {

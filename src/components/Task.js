@@ -19,24 +19,17 @@ class Task extends Component {
     this.removeTask = this.removeTask.bind(this);
   }
 
-  changeTask() {
+  changeTask(task) {
     console.log('change');
 
-    const { onChange } = this.props,
-      {
-        name,
-        start,
-        end,
-        id,
-        period
-      } = this.state;
+    const { onChange } = this.props;
 
-    onChange({ name, start, end, id, period });
+    onChange(task);
   }
 
-  componentDidUpdate() {
-    this.changeTask();
-  }
+  // componentDidUpdate() {
+  //   this.changeTask();
+  // }
 
   removeTask() {
     console.log('remove');
@@ -47,24 +40,81 @@ class Task extends Component {
     onRemove(id);
   }
 
+  isTime(time) {
+    const reg = /[0-9]{2}:[0-9]{2}/g;
+    return reg.test(time);
+  }
+
+  calculatePeriod(start, end) {
+    if( !this.isTime(start) && !this.isTime(end) ) return '00:00';
+
+    const startArr = start.split(':'),
+      endArr = end.split(':');
+
+    let hours = parseInt(endArr[0]) - parseInt(startArr[0]),
+      minutes = parseInt(endArr[1]) - parseInt(startArr[1]);
+
+    hours = (hours < 0) ? hours + 24 : hours;
+    hours = (minutes < 0) ? hours - 1 : hours;
+    minutes = (minutes < 0) ? minutes + 60 : minutes;
+
+    return `${(hours > 9 ? hours : (`0${hours}`))}:${(minutes > 9 ? minutes : (`0${minutes}`))}`;
+  }
+
+  changeStartTime(start) {
+    const { id, end, name } = this.state,
+      period = this.calculatePeriod(start, end);
+
+    this.setState({ start, period });
+    this.changeTask({ id, start, end, name, period });
+  }
+
+  changeEndTime(end) {
+    const { id, start, name } = this.state,
+      period = this.calculatePeriod(start, end);
+
+    this.setState({ end, period });
+    this.changeTask({ id, start, end, name, period });
+  }
+
+  changeName(value) {
+    const { id, start, end, period } = this.state;
+    this.setState({ name: value });
+    this.changeTask({ id, start, end, name: value, period });
+  }
+
   inputHandler(e) {
 
     const field = e.target.name,
-      { value } = e.target;
+      { value } = e.target,
+      period = '00:00';
 
-    this.setState({ [field] : value })
+    switch (field) {
+      case 'start':
+        this.changeStartTime(value);
+        break;
+      case 'end':
+        this.changeEndTime(value);
+        break;
+      case 'name':
+        this.changeName(value);
+        break;
+      default:
+        return;
+    }
   }
 
   updateStart() {
+
     const time = Time.getTime('hh:mm');
 
-    this.setState({ start: time });
+    this.changeStartTime(time);
   }
 
   updateEnd() {
     const time = Time.getTime('hh:mm');
 
-    this.setState({ end: time });
+    this.changeEndTime(time);
   }
 
   render() {
