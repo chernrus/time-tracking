@@ -20,6 +20,8 @@ class TimeTracker extends Component {
     this.calculateTasks = this.calculateTasks.bind(this);
     this.removeAllTask = this.removeAllTask.bind(this);
     this.createTask = this.createTask.bind(this);
+    this.changeTask = this.changeTask.bind(this);
+    this.removeTask = this.removeTask.bind(this);
   }
 
   loadData() {
@@ -45,6 +47,27 @@ class TimeTracker extends Component {
 
   createTask() {
     console.log('Create tasks');
+
+    const task = {
+        name: '',
+        start: '',
+        end: '',
+        period: '00:00',
+        id: uuidv4()
+      },
+      { data } = this.state;
+
+    data.push( task );
+
+    this.setState({ data: data });
+  }
+
+  changeTask( task ) {
+    console.log('Cange Task', task);
+  }
+
+  removeTask( id ) {
+    console.log('Remove Task', id);
   }
 
   render() {
@@ -53,13 +76,15 @@ class TimeTracker extends Component {
       <div className="time-tracker">
         <div className="time-tracker__header">
           <ControlButtons
-            onCalculate={this.calculateTasks}
-            onRemove={this.removeAllTask}/>
+            onCalculate={ this.calculateTasks }
+            onRemove={ this.removeAllTask }/>
         </div>
-        <TaskList/>
+        <TaskList data={ data }
+          onChange={ this.changeTask }
+          onRemove={ this.removeTask }/>
         <div className="time-tracker__footer">
           <CreateTaskButton
-            onCreate={this.createTask}/>
+            onCreate={ this.createTask }/>
           <TotalTime/>
         </div>
       </div>
