@@ -3,6 +3,7 @@ import ControlButtons from './ControlButtons';
 import TaskList from './TaskList';
 import CreateTaskButton from './CreateTaskButton';
 import TotalTime from './TotalTime';
+import CalculatedList from './CalculatedList';
 import { helper as _ } from '../helper';
 import uuidv4 from '../uuid';
 
@@ -12,7 +13,8 @@ class TimeTracker extends Component {
 
     this.state = {
       error: false,
-      data: []
+      data: [],
+      calcListIsShow: false
     };
 
     this.loadData();
@@ -44,10 +46,13 @@ class TimeTracker extends Component {
 
   calculateTasks() {
     console.log('Calculate all tasks');
+    this.setState({ calcListIsShow: true});
   }
 
   removeAllTask() {
     console.log('Remove all tasks');
+    this.setState({ data: [] });
+    this.saveData([]);
   }
 
   createTask() {
@@ -77,7 +82,7 @@ class TimeTracker extends Component {
         item.start = task.start;
         item.end = task.end;
         item.name = task.name;
-        item.period = task.epriod;
+        item.period = task.period;
         isValue = true;
       }
     });
@@ -91,8 +96,23 @@ class TimeTracker extends Component {
     console.log('Remove Task', id);
   }
 
+  calculateTime(data) {
+    let time = '00:00';
+
+    data.map((task) => {
+      time = _.sumTime(time, task.period);
+    });
+    console.log(time);
+    return time;
+  }
+
   render() {
-    const { data } = this.state
+    const {
+        data,
+        calcListIsShow
+      } = this.state,
+      time = this.calculateTime(data);
+
     return (
       <div className="time-tracker">
         <div className="time-tracker__header">
@@ -106,8 +126,9 @@ class TimeTracker extends Component {
         <div className="time-tracker__footer">
           <CreateTaskButton
             onCreate={ this.createTask }/>
-          <TotalTime/>
+          <TotalTime time={ time }/>
         </div>
+        {calcListIsShow && <CalculatedList data={ data }/>}
       </div>
     );
   }

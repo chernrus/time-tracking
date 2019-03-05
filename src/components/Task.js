@@ -23,13 +23,9 @@ class Task extends Component {
     console.log('change');
 
     const { onChange } = this.props;
-
+    console.log(task);
     onChange(task);
   }
-
-  // componentDidUpdate() {
-  //   this.changeTask();
-  // }
 
   removeTask() {
     console.log('remove');
@@ -120,7 +116,9 @@ class Task extends Component {
   render() {
     const { start,
       end,
-      name } = this.state;
+      name,
+      period
+    } = this.state;
 
     return (
       <div className="task">
@@ -142,6 +140,7 @@ class Task extends Component {
           onChange={this.inputHandler}/>
         <button type="button" className="task__delete-button deleteBtn"
           onClick={this.removeTask}>X</button>
+        <span className="task__period">{period}</span>
       </div>
     );
   }

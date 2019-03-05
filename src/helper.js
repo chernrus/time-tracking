@@ -26,9 +26,23 @@ export const helper = (function(){
     })
   };
 
+  function sumTime(first, second) {
+    console.log(first, second);
+    var firstArr = first.split(':'),
+      secondArr = second.split(':'),
+      hours = parseInt(firstArr[0]) + parseInt(secondArr[0]),
+      minutes = parseInt(firstArr[1]) + parseInt(secondArr[1]);
+
+    hours = (minutes >= 60) ? hours + 1 : hours;
+    minutes = (minutes >= 60) ? minutes - 60 : minutes;
+
+    return `${(hours > 9 ? hours : (`0${hours}`))}:${(minutes > 9 ? minutes : (`0${minutes}`))}`;
+  }
+
   return {
     getData,
-    checkData
+    checkData,
+    sumTime
   }
 
 }());

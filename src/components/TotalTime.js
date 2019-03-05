@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
 class TotalTime extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
-
+    const { time } = this.props
     return (
       <div className="total-time">
           Всего&nbsp;
-          <span className="total-time__time">00:00</span>
+          <span className="total-time__time">{ time }</span>
       </div>
     );
   }
