@@ -94,6 +94,15 @@ class TimeTracker extends Component {
 
   removeTask( id ) {
     console.log('Remove Task', id);
+    const { data } = this.state;
+
+    data.forEach((task, i) => {
+      if(task.id === id) {
+        data.splice(i, 1);
+      }
+    });
+
+    this.saveData(data);
   }
 
   calculateTime(data) {
