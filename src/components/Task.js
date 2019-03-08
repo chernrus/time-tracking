@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import uuidv4 from '../uuid';
 import Time from './Time';
+import '../styles/Task.css';
 
 class Task extends Component {
   constructor(props) {
@@ -126,20 +127,21 @@ class Task extends Component {
           name="start"
           value={ start }
           onChange={ this.inputHandler }/>
-        <button type="button" className="task__time-button startBtn"
-          onClick={ this.updateStart }>+</button>
+        <button type="button" className="task__time-button startBtn far fa-clock"
+          onClick={ this.updateStart }></button>
+        <span>&mdash;&nbsp;</span>
         <input type="time" className="task__time-input endTime"
           name="end"
           value={ end }
           onChange={ this.inputHandler }/>
-        <button type="button" className="task__time-button endBtn"
-          onClick={ this.updateEnd }>+</button>
+        <button type="button" className="task__time-button endBtn far fa-clock"
+          onClick={ this.updateEnd }></button>
         <input type="text" className="task__name-input taskInput"
           name="name"
           value={ name }
           onChange={this.inputHandler}/>
-        <button type="button" className="task__delete-button deleteBtn"
-          onClick={this.removeTask}>X</button>
+        <button type="button" className="task__delete-button deleteBtn far fa-trash-alt"
+          onClick={this.removeTask}></button>
         <span className="task__period">{period}</span>
       </div>
     );
