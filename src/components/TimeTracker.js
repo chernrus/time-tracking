@@ -7,6 +7,7 @@ import CalculateButton from './CalculateButton';
 import ClearButton from './ClearButton';
 import { helper as _ } from '../helper';
 import uuidv4 from '../uuid';
+import '../styles/TimeTracker.css';
 
 class TimeTracker extends Component {
   constructor(props) {

@@ -1,5 +1,10 @@
 var Time = (function () {
 
+  function isTime(time) {
+    const reg = /[0-9]{2}:[0-9]{2}/g;
+    return reg.test(time);
+  }
+
   function getTime(foramt) {
     var currentTime = new Date(),
       hours = currentTime.getHours(),
@@ -19,8 +24,21 @@ var Time = (function () {
       }
   }
 
+  function parseTimeFormat(time, format) {
+    if(isTime(time)) {
+      var timeArr = time.split(':'),
+        timeStr = '';
+
+      return `${+timeArr[0]}h ${+timeArr[1]}m`;
+    }
+
+    return '0h&nbsp;0m';
+  }
+
   return {
-    getTime
+    isTime,
+    getTime,
+    parseTimeFormat
   }
 
 }());

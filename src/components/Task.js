@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import '../styles/Task.css';
 import uuidv4 from '../uuid';
 import Time from './Time';
-import '../styles/Task.css';
 import AutogrowTextarea from './AutogrowTextarea';
 
 class Task extends Component {
@@ -21,13 +21,7 @@ class Task extends Component {
     this.updateStart = this.updateStart.bind(this);
     this.updateEnd = this.updateEnd.bind(this);
     this.removeTask = this.removeTask.bind(this);
-    this.resize = this.resize.bind(this);
     this.changeName = this.changeName.bind(this);
-  }
-
-  componentDidMount() {
-    // console.log(this.refNameElement.current);
-    // this.resize(this.refNameElement.current);
   }
 
   changeTask(task) {
@@ -43,13 +37,8 @@ class Task extends Component {
     onRemove(id);
   }
 
-  isTime(time) {
-    const reg = /[0-9]{2}:[0-9]{2}/g;
-    return reg.test(time);
-  }
-
   calculatePeriod(start, end) {
-    if( !this.isTime(start) && !this.isTime(end) ) return '00:00';
+    if( !Time.isTime(start) && !Time.isTime(end) ) return '00:00';
 
     const startArr = start.split(':'),
       endArr = end.split(':');
@@ -80,17 +69,9 @@ class Task extends Component {
     this.changeTask({ id, start, end, name, period });
   }
 
-  resize (target) {
-    const element = target;
-    // console.log(element.scrollHeight);
-    element.style.height = 'auto';
-    element.style.height = element.scrollHeight+'px';
-    // console.log(element.style.height);
-  }
-
   changeName(value, target) {
     const { id, start, end, period } = this.state;
-    // this.resize(target);
+
     this.setState({ name: value });
     this.changeTask({ id, start, end, name: value, period });
   }
@@ -131,10 +112,13 @@ class Task extends Component {
 
   render() {
     const { start,
-      end,
-      name,
-      period
-    } = this.state;
+        end,
+        name,
+        period
+      } = this.state,
+      timeStr = Time.parseTimeFormat(period, 'dhdm');
+
+
 
     return (
       <div className="task">
@@ -155,7 +139,7 @@ class Task extends Component {
           value={ name }
           onChangeValue={this.changeName}/>
 
-          <span className="task__period">{period}</span>
+          <span className="task__period">{timeStr}</span>
         <button type="button" className="task__delete-button deleteBtn far fa-trash-alt"
           onClick={this.removeTask}></button>
       </div>

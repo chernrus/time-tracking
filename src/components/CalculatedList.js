@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Time from './Time';
 
 class CalculatedList extends Component {
 
@@ -12,13 +13,8 @@ class CalculatedList extends Component {
     return sorted;
   }
 
-  isTime(time) {
-    const reg = /[0-9]{2}:[0-9]{2}/g;
-    return reg.test(time);
-  }
-
   calcPeriod(start, end) {
-    if( !this.isTime(start) && !this.isTime(end) ) return '00:00';
+    if( !Time.isTime(start) && !Time.isTime(end) ) return '00:00';
 
     var startArr = start.split(':'),
       endArr = end.split(':'),
@@ -85,9 +81,10 @@ class CalculatedList extends Component {
 
       calculatedTasks.map((item) => {
         calcList.push(
+
           <div className="calculated-list__item" key={item.name}>
-            <span className="calculated-list__task-name">{item.name || '~'}</span> -&nbsp;
-            <span className="calculated-list__task-time">{item.time}</span>
+            <span className="calculated-list__task-time">{Time.parseTimeFormat(item.time, 'dhdm')}</span> -&nbsp;
+            <span className="calculated-list__task-name">{item.name || '~'}</span>
           </div>
         )
       });
