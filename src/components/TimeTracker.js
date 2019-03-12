@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import ControlButtons from './ControlButtons';
 import TaskList from './TaskList';
 import CreateTaskButton from './CreateTaskButton';
 import TotalTime from './TotalTime';
 import CalculatedList from './CalculatedList';
+import CalculateButton from './CalculateButton';
+import ClearButton from './ClearButton';
 import { helper as _ } from '../helper';
 import uuidv4 from '../uuid';
 
@@ -125,9 +126,8 @@ class TimeTracker extends Component {
     return (
       <div className="time-tracker">
         <div className="time-tracker__header">
-          <ControlButtons
-            onCalculate={ this.calculateTasks }
-            onRemove={ this.removeAllTask }/>
+          <CalculateButton onCalculate={ this.calculateTasks }/>
+          <ClearButton onRemove={ this.removeAllTask }/>
         </div>
         <TaskList data={ data }
           onChange={ this.changeTask }
