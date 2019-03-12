@@ -81,6 +81,7 @@ textarea {
   padding: 0;
   width: 25px;
   height: 25px;
+  color: #000;
 }
 
 .task__time-button:hover,
