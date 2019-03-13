@@ -5,34 +5,55 @@ class SideMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hamburgerClassName: 'hamburger'
+      hamburgerClassName: 'hamburger',
+      menuClassName: 'side-menu'
     }
 
     this.showHideMenu = this.showHideMenu.bind(this);
   }
 
   showHideMenu() {
-    let { hamburgerClassName } = this.state;
-
+    let {
+      menuClassName,
+      hamburgerClassName
+    } = this.state;
+    console.log(this.props);
+    const mainContainer = this.props.main.current,
+      mainHeader = this.props.header.current;
+      
+    console.log(mainContainer);
     switch (hamburgerClassName) {
       case 'hamburger':
         hamburgerClassName = 'hamburger change';
+        menuClassName = 'side-menu opened';
         break;
       case 'hamburger change':
         hamburgerClassName = 'hamburger';
+        menuClassName = 'side-menu';
         break;
       default:
         hamburgerClassName = 'hamburger change';
+        menuClassName = 'side-menu opened';
     }
 
-    this.setState({ hamburgerClassName });
+    mainContainer.classList.toggle('change');
+    mainHeader.classList.toggle('change');
+
+    this.setState({
+      menuClassName,
+      hamburgerClassName
+    });
   }
 
   render() {
+    const {
+      menuClassName,
+      hamburgerClassName
+    } = this.state;
 
     return (
-      <div className="side-menu">
-        <div className={ this.state.hamburgerClassName } onClick={ this.showHideMenu }>
+      <div className={ menuClassName }>
+        <div className={ hamburgerClassName } onClick={ this.showHideMenu }>
           <div className="hamburger__bar1"></div>
           <div className="hamburger__bar2"></div>
           <div className="hamburger__bar3"></div>

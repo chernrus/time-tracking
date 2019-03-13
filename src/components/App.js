@@ -8,15 +8,24 @@ class App extends Component {
 
   constructor() {
     super();
+    this.mainContainer = React.createRef();
+    this.mainHeader = React.createRef();
+  }
 
+  handleChange(e) {
+    console.log(e);
   }
 
   render() {
     return (
       <div className="App">
-        <SideMenu/>
-        <MainHeader title={ 'Time tracker '}/>
-        <TimeTracker/>
+        <SideMenu main={this.mainContainer} header={this.mainHeader}/>
+        <div ref={ this.mainHeader } className="main-header">
+          <MainHeader  title={ 'Time tracker '}/>
+        </div>
+        <div ref={ this.mainContainer } className="main-container">
+          <TimeTracker/>
+        </div>
       </div>
     );
   }

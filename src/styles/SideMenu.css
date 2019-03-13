@@ -1,31 +1,38 @@
 .side-menu {
   height: 100%;
-  width: 200px;
+  width: 35px;
+  padding: 10px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 20px;
+  transition: 0.5s;
 }
 
 .side-menu a {
-  padding: 5px 5px 5px 20px;
+  padding: 5px 5px 5px 45px;
   text-decoration: none;
   font-size: 25px;
   color: #818181;
   display: block;
+  min-width: 160px;
 }
 
 .side-menu a:hover {
   color: #f1f1f1;
 }
 
+.side-menu.opened{
+  width: 200px;
+}
+
 
 .hamburger {
   display: inline-block;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 .hamburger__bar1,
@@ -35,7 +42,11 @@
   height: 5px;
   background-color: #fff;
   margin: 6px 0;
-  transition: 0.4s;
+  transition: 0.5s;
+}
+
+.hamburger.change {
+  margin-left: 170px;
 }
 
 .change .hamburger__bar1 {

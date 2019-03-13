@@ -6,7 +6,7 @@ class SideMenu extends Component {
   render() {
     const { title } = this.props;
     return (
-      <div className="main-header">
+      <div className="main-header__title">
         <h1>{ title }</h1>
       </div>
     );
