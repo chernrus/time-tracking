@@ -79,8 +79,7 @@ class Task extends Component {
   inputHandler(e) {
 
     const field = e.target.name,
-      { value } = e.target,
-      period = '00:00';
+      { value } = e.target;
 
     switch (field) {
       case 'start':
