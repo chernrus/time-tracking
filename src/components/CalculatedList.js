@@ -48,14 +48,17 @@ class CalculatedList extends Component {
     return {time: time, name: secondT.name};
   }
 
+  checkName(task) {
+    return task.name === this.name;
+  }
+
   calculate(data) {
     var sorted = this.sortData(data, 'name'),
       calculated = [],
-      sumBuffer = null,
-      sum = '00:00';
+      sumBuffer = null;
 
     for(var i = 0; i < sorted.length; i++) {
-      if(calculated.find((task)=>{return task.name === sorted[i].name})) {
+      if(calculated.find(this.checkName, sorted[i])) {
         continue;
       }
       else {
