@@ -127,6 +127,7 @@ class Task extends Component {
           value={ start }
           onChange={ this.inputHandler }/>
         <button type="button" className="task__time-button startBtn far fa-clock"
+          name="start time button"
           onClick={ this.updateStart }></button>
         <span>&mdash;&nbsp;</span>
         <input type="time" className="task__time-input endTime"
@@ -134,13 +135,14 @@ class Task extends Component {
           value={ end }
           onChange={ this.inputHandler }/>
         <button type="button" className="task__time-button endBtn far fa-clock"
+          name="end time button"
           onClick={ this.updateEnd }></button>
         <AutogrowTextarea
           value={ name }
           onChangeValue={this.changeName}/>
-
-          <span className="task__period">{timeStr}</span>
+        <span className="task__period">{timeStr}</span>
         <button type="button" className="task__delete-button deleteBtn far fa-trash-alt"
+          name="delete task button"
           onClick={this.removeTask}></button>
       </div>
     );

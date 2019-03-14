@@ -26,8 +26,7 @@ var Time = (function () {
 
   function parseTimeFormat(time, format) {
     if(isTime(time)) {
-      var timeArr = time.split(':'),
-        timeStr = '';
+      var timeArr = time.split(':');
 
       return `${+timeArr[0]}h ${+timeArr[1]}m`;
     }

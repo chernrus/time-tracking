@@ -27,7 +27,6 @@ export const helper = (function(){
   };
 
   function sumTime(first, second) {
-    console.log(first, second);
     var firstArr = first.split(':'),
       secondArr = second.split(':'),
       hours = parseInt(firstArr[0]) + parseInt(secondArr[0]),

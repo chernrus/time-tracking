@@ -3,14 +3,9 @@ import Task from './Task';
 import '../styles/TaskList.css';
 
 class TaskList extends Component {
-  constructor() {
-    super();
-  }
-
   createTasks(data) {
     let tasks = [];
 
-    console.log(data);
     data.forEach((taskData, i) => {
       tasks.push(
         <Task
