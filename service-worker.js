@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/time-tracker/precache-manifest.3b82ea2668d58a1e9a51c2153cec9d4e.js"
+  "/time-tracking/precache-manifest.ec59e1fb71233f10d6f26d05d15cc6ee.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/time-tracker/index.html", {
+workbox.routing.registerNavigationRoute("/time-tracking/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
