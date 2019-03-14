@@ -12,10 +12,6 @@ class App extends Component {
     this.mainHeader = React.createRef();
   }
 
-  handleChange(e) {
-    console.log(e);
-  }
-
   render() {
     return (
       <div className="App">

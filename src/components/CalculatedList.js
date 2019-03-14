@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Time from './Time';
+import '../styles/CalculatedList.css';
 
 class CalculatedList extends Component {
 
@@ -24,13 +25,11 @@ class CalculatedList extends Component {
     hours = (hours < 0) ? hours + 24 : hours;
     hours = (minutes < 0) ? hours - 1 : hours;
     minutes = (minutes < 0) ? minutes + 60 : minutes;
-    console.log(start, end);
-    console.log(start, end, `=${(hours > 9 ? hours : (`0${hours}`))}:${(minutes > 9 ? minutes : (`0${minutes}`))}`);
+
     return `${(hours > 9 ? hours : (`0${hours}`))}:${(minutes > 9 ? minutes : (`0${minutes}`))}`;
   }
 
   sumTime(first, second) {
-    console.log(first, second);
     var firstArr = first.split(':'),
       secondArr = second.split(':'),
       hours = parseInt(firstArr[0]) + parseInt(secondArr[0]),
@@ -43,7 +42,6 @@ class CalculatedList extends Component {
   }
 
   calculateTimeSummary(firstT, secondT) {
-    console.log(firstT, secondT);
     var period = secondT.period || this.calcPeriod(secondT.start, secondT.end),
       time = firstT ? this.sumTime(firstT.time, period) : period;
 
@@ -55,7 +53,7 @@ class CalculatedList extends Component {
       calculated = [],
       sumBuffer = null,
       sum = '00:00';
-    console.log(data);
+
     for(var i = 0; i < sorted.length; i++) {
       if(calculated.find((task)=>{return task.name === sorted[i].name})) {
         continue;
@@ -71,7 +69,6 @@ class CalculatedList extends Component {
         sumBuffer = null;
       }
     }
-    console.log(calculated);
 
     return calculated;
   };
@@ -83,8 +80,8 @@ class CalculatedList extends Component {
         calcList.push(
 
           <div className="calculated-list__item" key={item.name}>
-            <span className="calculated-list__task-time">{Time.parseTimeFormat(item.time, 'dhdm')}</span> -&nbsp;
-            <span className="calculated-list__task-name">{item.name || '~'}</span>
+            <div className="calculated-list__task-time">{Time.parseTimeFormat(item.time, 'dhdm')}</div>
+            <div className="calculated-list__task-name">{item.name || '~'}</div>
           </div>
         )
       });
@@ -98,10 +95,12 @@ class CalculatedList extends Component {
       calculatedTasks = this.calculate(data),
       list = this.createList(calculatedTasks);
 
-    console.log(data);
-
     return (
       <div className="calculated-list">
+        <div className="calculated-list__hedaer">
+          <div className="calculated-list__title-time">Time</div>
+          <div className="calculated-list__title-name">Task name</div>
+        </div>
         { list }
       </div>
     );

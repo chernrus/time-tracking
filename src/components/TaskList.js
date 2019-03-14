@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Task from './Task';
+import '../styles/TaskList.css';
 
 class TaskList extends Component {
   constructor() {

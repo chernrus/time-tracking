@@ -1,14 +1,7 @@
-.task-list {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  line-height: 25px;
-}
-
 .task {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding: 5px;
-  width: 480px;
+  width: 600px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -47,10 +40,6 @@ textarea:focus {
   border-bottom: 2px solid #2ea790;
 }
 
-button {
-  margin: 0 5px;
-}
-
 .taskInput {
   display: none;
 }/* TODO: dele this */
@@ -75,9 +64,10 @@ textarea {
 
 .task__time-button,
 .task__delete-button {
+  margin: 0 5px;
   background-color: inherit;
   border: none;
-  font-size: 25px;
+  font-size: 20px;
   padding: 0;
   width: 25px;
   height: 25px;
@@ -91,4 +81,8 @@ textarea {
 
 .task__delete-button {
   margin-left: 20px;
+}
+
+.task__period {
+  width: 100px;
 }

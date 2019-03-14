@@ -75,7 +75,6 @@ class TimeTracker extends Component {
   }
 
   changeTask( task ) {
-    console.log('Cange Task', task);
     const { data } = this.state;
     let isValue = false;
 
@@ -95,7 +94,7 @@ class TimeTracker extends Component {
   }
 
   removeTask( id ) {
-    console.log('Remove Task', id);
+    console.log('Remove Task');
     const { data } = this.state;
 
     data.forEach((task, i) => {
@@ -113,7 +112,7 @@ class TimeTracker extends Component {
     data.map((task) => {
       time = _.sumTime(time, task.period);
     });
-    console.log(time);
+
     return time;
   }
 

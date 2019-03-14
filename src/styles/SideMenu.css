@@ -1,6 +1,6 @@
 .side-menu {
   height: 100%;
-  width: 35px;
+  width: 55px;
   padding: 10px;
   position: fixed;
   z-index: 1;
@@ -12,22 +12,46 @@
 }
 
 .side-menu a {
-  padding: 5px 5px 5px 45px;
+  padding: 5px 5px 5px 0px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
   display: block;
-  min-width: 160px;
+  color: #818181;
+  min-width: 200px;
 }
 
+.side-menu__item {
+  color: #818181;
+  cursor: pointer;
+}
+
+.side-menu__item:hover,
 .side-menu a:hover {
   color: #f1f1f1;
 }
 
 .side-menu.opened{
-  width: 200px;
+  width: 220px;
 }
 
+.side-menu__icon {
+  width: 35px;
+  font-size: 35px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.side-menu__time-tracker::before {
+
+}
+
+.side-menu__pomodoro::before {
+
+}
+
+.side-menu__pomodoro::before {
+
+}
 
 .hamburger {
   display: inline-block;

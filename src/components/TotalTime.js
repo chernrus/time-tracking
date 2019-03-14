@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/TotalTime.css';
 
 class TotalTime extends Component {
   render() {

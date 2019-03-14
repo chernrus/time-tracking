@@ -17,11 +17,11 @@ class SideMenu extends Component {
       menuClassName,
       hamburgerClassName
     } = this.state;
-    console.log(this.props);
+
     const mainContainer = this.props.main.current,
       mainHeader = this.props.header.current;
-      
-    console.log(mainContainer);
+
+
     switch (hamburgerClassName) {
       case 'hamburger':
         hamburgerClassName = 'hamburger change';
@@ -58,9 +58,24 @@ class SideMenu extends Component {
           <div className="hamburger__bar2"></div>
           <div className="hamburger__bar3"></div>
         </div>
-        <a href="#">Time-tracker</a>
-        <a href="#">Pomodoro</a>
-        <a href="#">Desk</a>
+        <div className="side-menu__item">
+          <a className="side-menu__time-tracker" href="#">
+            <i className="side-menu__icon far fa-clock"></i>
+            Time-tracker
+          </a>
+        </div>
+        <div className="side-menu__item">
+          <a className="side-menu__pomodoro" href="#">
+            <i className="side-menu__icon far fa-hourglass"></i>
+             Pomodoro
+          </a>
+        </div>
+        <div className="side-menu__item">
+          <a className="side-menu__desk" href="#">
+            <i className="side-menu__icon far fa-calendar"></i>
+            Desk
+          </a>
+        </div>
       </div>
     );
   }
