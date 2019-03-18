@@ -24,8 +24,9 @@ class AutogrowTextarea extends Component {
 
   handleChange(event) {
     const textareaLineHeight = 18,
-      { minRows, maxRows } = this.state,
-      previousRows = event.target.rows;
+      { minRows, maxRows, value } = this.state,
+      previousRows = event.target.rows,
+      currentValue = event.target.value;
 
   	event.target.rows = minRows; // reset number of rows in textarea
 
@@ -44,8 +45,10 @@ class AutogrowTextarea extends Component {
     	value: event.target.value,
       rows: currentRows < maxRows ? currentRows : maxRows,
     });
-
-    this.props.onChangeValue(event.target.value);
+    // console.log('sdfsdfg');
+    if(currentValue !== value) {
+      this.props.onChangeValue(event.target.value);
+    }
   }
 
   render() {

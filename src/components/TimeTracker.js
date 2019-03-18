@@ -122,7 +122,7 @@ class TimeTracker extends Component {
         calcListIsShow
       } = this.state,
       time = this.calculateTime(data);
-      
+
     return (
       <div className="time-tracker">
         <div className="time-tracker__header">
