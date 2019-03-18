@@ -31,7 +31,7 @@ var Time = (function () {
       return `${+timeArr[0]}h ${+timeArr[1]}m`;
     }
 
-    return '0h&nbsp;0m';
+    return '0h 0m';
   }
 
   return {
