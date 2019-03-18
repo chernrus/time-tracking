@@ -9,7 +9,7 @@ class TaskList extends Component {
     data.forEach((taskData, i) => {
       tasks.push(
         <Task
-          key={i}
+          key={taskData.id}
           taskData = { taskData }
           onChange = { this.props.onChange }
           onRemove = { this.props.onRemove }/>
