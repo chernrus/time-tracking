@@ -53,7 +53,8 @@ class CalculatedList extends Component {
   }
 
   calculate(data) {
-    var sorted = this.sortData(data, 'name'),
+    var dataCopy = JSON.parse(JSON.stringify(data)),
+      sorted = this.sortData(dataCopy, 'name'),
       calculated = [],
       sumBuffer = null;
 
