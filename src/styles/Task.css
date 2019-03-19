@@ -86,6 +86,7 @@ textarea {
 
 .task__period {
   width: 100px;
+  cursor: pointer;
 }
 
 .task__time-button {

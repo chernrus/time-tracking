@@ -77,6 +77,13 @@ class CalculatedList extends Component {
     return calculated;
   };
 
+  copyTime = e =>{
+    const str = e.target.innerText,
+      { onCopy } = this.props;
+
+    onCopy(str);
+  }
+
   createList(calculatedTasks) {
     const calcList = [];
 
@@ -84,8 +91,8 @@ class CalculatedList extends Component {
         calcList.push(
 
           <div className="calculated-list__item" key={item.name}>
-            <div className="calculated-list__task-time">{Time.parseTimeFormat(item.time, 'dhdm')}</div>
-            <div className="calculated-list__task-name">{item.name || '~'}</div>
+            <div className="calculated-list__task-time" onClick={this.copyTime}>{Time.parseTimeFormat(item.time, 'dhdm')}</div>
+            <div className="calculated-list__task-name" onClick={this.copyTime}>{item.name || '~'}</div>
           </div>
         )
       });
