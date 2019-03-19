@@ -6,7 +6,8 @@ var Time = (function () {
   }
 
   function getTime(foramt) {
-    var currentTime = new Date(),
+    var result = '',
+      currentTime = new Date(),
       hours = currentTime.getHours(),
       minutes = currentTime.getMinutes(),
       seconds = currentTime.getSeconds(),
@@ -14,14 +15,16 @@ var Time = (function () {
 
       switch (foramt) {
         case 'hh:mm':
-          return tStrHM;
+          result = tStrHM;
           break;
         case 'hh:mm:ss':
-          return `${tStrHM}:${(seconds > 9 ? seconds : `0${seconds}`)}`;
+          result = `${tStrHM}:${(seconds > 9 ? seconds : `0${seconds}`)}`;
           break;
         default:
-          return tStrHM;
+          result = tStrHM;
       }
+
+    return result;
   }
 
   function parseTimeFormat(time, format) {

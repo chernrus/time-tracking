@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Time from './Time';
+import PropTypes from 'prop-types';
 import '../styles/CalculatedList.css';
 
 class CalculatedList extends Component {
@@ -119,3 +120,8 @@ class CalculatedList extends Component {
 }
 
 export default CalculatedList;
+
+CalculatedList.propTypes = {
+  data: PropTypes.array,
+  onCopy: PropTypes.func
+};

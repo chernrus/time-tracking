@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import '../styles/AutogrowTextarea.css';
 
 class AutogrowTextarea extends Component {
@@ -67,3 +68,8 @@ class AutogrowTextarea extends Component {
 }
 
 export default AutogrowTextarea;
+
+AutogrowTextarea.propTypes = {
+  value: PropTypes.string,
+  onChangeValue: PropTypes.func
+};

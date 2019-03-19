@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import '../styles/TotalTime.css';
 
 class TotalTime extends Component {
@@ -23,3 +24,7 @@ class TotalTime extends Component {
 }
 
 export default TotalTime;
+
+TotalTime.propTypes = {
+  time: PropTypes.string
+};

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Task.css';
 import uuidv4 from '../uuid';
 import Time from './Time';
+import PropTypes from 'prop-types';
 import AutogrowTextarea from './AutogrowTextarea';
 
 class Task extends Component {
@@ -157,6 +158,22 @@ class Task extends Component {
 }
 
 export default Task;
+
+
+Task.propTypes = {
+  taskData: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    start: PropTypes.string,
+    end: PropTypes.string,
+    period: PropTypes.string
+  }),
+  onChange: PropTypes.func,
+  onRemove: PropTypes.func,
+  onCopy: PropTypes.func
+};
+
+
 
 // <textarea type="text" className="task__name-input taskInput"
 //   name="name"

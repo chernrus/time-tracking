@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CreateTaskButton extends Component {
-  constructor() {
-    super();
 
-    this.createTask = this.createTask.bind(this);
-  }
-
-  createTask() {
+  createTask = () => {
     const { onCreate } = this.props;
 
     onCreate();
@@ -23,3 +19,7 @@ class CreateTaskButton extends Component {
 }
 
 export default CreateTaskButton;
+
+CreateTaskButton.propTypes = {
+  onCreate: PropTypes.func
+};

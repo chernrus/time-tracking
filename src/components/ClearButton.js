@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ClearButton extends Component {
-  constructor(props) {
-    super(props);
 
-    this.onRemoveAll = this.onRemoveAll.bind(this);
-  }
-
-  onRemoveAll() {
+  onRemoveAll = () => {
     this.props.onRemove();
   }
 
@@ -23,3 +19,7 @@ class ClearButton extends Component {
 }
 
 export default ClearButton;
+
+ClearButton.propTypes = {
+  onRemoveAll: PropTypes.func
+};
