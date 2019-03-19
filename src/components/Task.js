@@ -76,6 +76,13 @@ class Task extends Component {
     this.changeTask({ id, start, end, name: value, period });
   }
 
+  copyTime = e =>{
+    const str = e.target.innerText,
+      { onCopy } = this.props;
+
+    onCopy(str);
+  }
+
   inputHandler(e) {
 
     const field = e.target.name,
@@ -139,10 +146,11 @@ class Task extends Component {
         <AutogrowTextarea
           value={ name }
           onChangeValue={this.changeName}/>
-        <span className="task__period">{timeStr}</span>
+        <span className="task__period"
+          onClick={ this.copyTime }>{timeStr}</span>
         <button type="button" className="task__delete-button deleteBtn far fa-trash-alt"
           name="delete task button"
-          onClick={this.removeTask}></button>
+          onClick={ this.removeTask }></button>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import TotalTime from './TotalTime';
 import CalculatedList from './CalculatedList';
 import CalculateButton from './CalculateButton';
 import ClearButton from './ClearButton';
+import Time from './Time';
 import { helper as _ } from '../helper';
 import uuidv4 from '../uuid';
 import '../styles/TimeTracker.css';
@@ -113,7 +114,7 @@ class TimeTracker extends Component {
       time = _.sumTime(time, task.period);
     });
 
-    return time;
+    return Time.parseTimeFormat(time);
   }
 
   render() {
@@ -129,15 +130,19 @@ class TimeTracker extends Component {
           <CalculateButton onCalculate={ this.calculateTasks }/>
           <ClearButton onRemove={ this.removeAllTask }/>
         </div>
-        <TaskList data={ data }
+        <TaskList
+          data={ data }
           onChange={ this.changeTask }
-          onRemove={ this.removeTask }/>
+          onRemove={ this.removeTask }
+          onCopy={ _.copyToClipboard }/>
         <div className="time-tracker__footer">
           <CreateTaskButton
             onCreate={ this.createTask }/>
-          <TotalTime time={ time }/>
+          <TotalTime
+            time={ time }
+            onCopy={ _.copyToClipboard }/>
         </div>
-        {calcListIsShow && <CalculatedList data={ data }/>}
+        {calcListIsShow && <CalculatedList data={ data } onCopy={ _.copyToClipboard }/>}
       </div>
     );
   }

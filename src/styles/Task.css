@@ -77,6 +77,7 @@ textarea {
 .task__time-button:hover,
 .task__delete-button:hover {
   color: #ccc;
+  background-color: inherit;
 }
 
 .task__delete-button {
@@ -85,4 +86,9 @@ textarea {
 
 .task__period {
   width: 100px;
+  cursor: pointer;
+}
+
+.task__time-button {
+
 }

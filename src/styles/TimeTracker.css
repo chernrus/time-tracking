@@ -18,3 +18,11 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.button-clear {
+  background-color: #ed6a40;
+}
+
+.button-clear:hover {
+  background-color: #f19376;
+}

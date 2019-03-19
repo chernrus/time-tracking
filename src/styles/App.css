@@ -42,14 +42,14 @@ button {
   cursor: pointer;
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: #50b6ab;
   text-align: center;
   letter-spacing: .5px;
   border-radius: 2px;
 }
 
 button:hover {
-  background-color: #2bbbad;
+  background-color: #7dc3bc;
 }
 
 .main-container {
