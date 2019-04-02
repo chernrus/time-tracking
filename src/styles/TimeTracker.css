@@ -26,3 +26,10 @@
 .button-clear:hover {
   background-color: #f19376;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .time-tracker {
+    width: 100%;
+  }
+}
