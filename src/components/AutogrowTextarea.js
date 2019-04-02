@@ -58,6 +58,7 @@ class AutogrowTextarea extends Component {
         ref={this.refNameElement}
         name="name"
         className="task__name"
+        placeholder="Task name..."
 				rows={this.state.rows}
 				value={this.state.value}
 				onChange={this.handleChange}
