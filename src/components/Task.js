@@ -47,12 +47,9 @@ class Task extends Component {
     let hours = parseInt(endArr[0]) - parseInt(startArr[0]),
       minutes = parseInt(endArr[1]) - parseInt(startArr[1]);
 
-    console.log(hours, minutes);
     hours = (minutes < 0) ? hours - 1 : hours;
     minutes = (minutes < 0) ? minutes + 60 : minutes;
     hours = (hours < 0) ? hours + 24 : hours;
-    // hours = (hours < 0) ? hours + 24 : hours;
-    console.log(hours, minutes);
     return `${(hours > 9 ? hours : (`0${hours}`))}:${(minutes > 9 ? minutes : (`0${minutes}`))}`;
   }
 
