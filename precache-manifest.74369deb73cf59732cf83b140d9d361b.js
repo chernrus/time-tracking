@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/time-tracking/static/js/runtime~main.91d0a879.js"
   },
   {
-    "revision": "c9dfd48b9d96aa6b7aef",
-    "url": "/time-tracking/static/js/main.c9dfd48b.chunk.js"
+    "revision": "c6cddd6316243b46ed3d",
+    "url": "/time-tracking/static/js/main.c6cddd63.chunk.js"
   },
   {
     "revision": "bb1cfbc77e0591448a8c",
     "url": "/time-tracking/static/js/2.bb1cfbc7.chunk.js"
   },
   {
-    "revision": "c9dfd48b9d96aa6b7aef",
-    "url": "/time-tracking/static/css/main.0be7451d.chunk.css"
+    "revision": "c6cddd6316243b46ed3d",
+    "url": "/time-tracking/static/css/main.8be2f2c4.chunk.css"
   },
   {
-    "revision": "54091a6c81563de088e3656379304dda",
+    "revision": "875d94a70c641b61876941d6f5ca12b3",
     "url": "/time-tracking/index.html"
   }
 ];

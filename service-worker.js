@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/time-tracking/precache-manifest.7f89f28fc0a4147a4d304b3d2af7be79.js"
+  "/time-tracking/precache-manifest.74369deb73cf59732cf83b140d9d361b.js"
 );
 
 workbox.clientsClaim();
