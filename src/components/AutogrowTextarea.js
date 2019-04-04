@@ -10,20 +10,23 @@ class AutogrowTextarea extends Component {
       value: props.value || '',
       rows: 1,
       minRows: 1,
-      maxRows: 5,
-      maxLength: 60
+      maxRows: 6,
+      maxLength: 60,
+      readonly: props.readonly || false,
+      class: props.className || ''
     }
 
     this.refNameElement = React.createRef();
 
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     setTimeout(this.handleChange, 50, { target: this.refNameElement.current });
   }
 
-  handleChange(event) {
+  handleChange = (event) =>{
     const textareaLineHeight = 18,
       { minRows, maxRows, value } = this.state,
       previousRows = event.target.rows,
@@ -52,17 +55,27 @@ class AutogrowTextarea extends Component {
     }
   }
 
+  handleClick = (event) => {
+    const { onClick } = this.props;
+
+    if( onClick ) {
+      onClick(event)
+    }
+  }
+
   render() {
     return (
       <textarea
         ref={this.refNameElement}
         name="name"
-        className="task__name"
+        className={`autogrow-textarea ${this.state.class}`}
         placeholder="Task name..."
 				rows={this.state.rows}
 				value={this.state.value}
 				onChange={this.handleChange}
         maxLength={this.state.maxLength}
+        readOnly={this.state.readonly}
+        onClick={this.handleClick}
 			/>
     );
   }

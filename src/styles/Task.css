@@ -23,7 +23,7 @@ input[type="time"]::-webkit-clear-button {
 }
 
 input:focus,
-textarea:focus {
+.task__name:focus {
   outline: none;
   border-bottom: 2px solid #2ea790;
 }
@@ -32,7 +32,7 @@ textarea:focus {
   display: none;
 }/* TODO: dele this */
 
-textarea {
+/* textarea {
   overflow: hidden;
   padding: 0;
   outline: none;
@@ -48,6 +48,21 @@ textarea {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   margin: 0 10px;
+} */
+
+.task__name {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 3px;
+  resize: none;
+  font-size: 16px;
+  line-height: 18px;
+  overflow: hidden;
+  height: auto;
+  padding: 5px;
+  margin: 0 10px;
+  border-bottom: 1px solid #546e7a;
+  box-shadow: 0px 4px 4px -6px black;
 }
 
 .task {
@@ -93,6 +108,12 @@ textarea {
 
 }
 
+@media only screen and (max-width: 400px) {
+  .task__time-input {
+    width: 65px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .task {
     width: 100%;
@@ -114,7 +135,6 @@ textarea {
   }
 
   .task__time-input {
-    width: 65px;
     font-size: 20px;
     line-height: 20px;
     height: 30px;

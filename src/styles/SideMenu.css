@@ -103,6 +103,10 @@
     width: 100%;
     padding-top: 54px;
   }
+
+  .side-menu__icon {
+    margin-bottom: 10px;
+  }
 }
 
 /* @media only screen and (max-width: 600px) {

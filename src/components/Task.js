@@ -144,6 +144,7 @@ class Task extends Component {
           name="end time button"
           onClick={ this.updateEnd }></button>
         <AutogrowTextarea
+          className = "task__name"
           value={ name }
           onChangeValue={this.changeName}/>
         <span className="task__period"

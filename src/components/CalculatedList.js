@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Time from './Time';
 import PropTypes from 'prop-types';
+import AutogrowTextarea from './AutogrowTextarea';
 import '../styles/CalculatedList.css';
 
 class CalculatedList extends Component {
@@ -79,9 +80,9 @@ class CalculatedList extends Component {
   };
 
   copyTime = e =>{
-    const str = e.target.innerText,
+    const str = e.target.value,
       { onCopy } = this.props;
-
+      
     onCopy(str);
   }
 
@@ -91,11 +92,17 @@ class CalculatedList extends Component {
       calculatedTasks.map((item) => {
         calcList.push(
 
-          <div className="calculated-list__item" key={item.name}>
-            <div className="calculated-list__task-time" onClick={this.copyTime}>{Time.parseTimeFormat(item.time, 'dhdm')}</div>
-            <div className="calculated-list__task-name" onClick={this.copyTime}>{item.name || '~'}</div>
+          <div className="calculated-list__item" key={ item.name }>
+            <div className="calculated-list__task-time" onClick={ this.copyTime }>{Time.parseTimeFormat(item.time, 'dhdm')}</div>
+            <AutogrowTextarea
+              value = { item.name || '~' }
+              className = "calculated-list__task-name"
+              onChangeValue= { this.changeName }
+              readonly = { true }
+              onClick={ this.copyTime }/>
           </div>
         )
+        // <div className="calculated-list__task-name" onClick={this.copyTime}>{item.name || '~'}</div>
       });
 
       return calcList;

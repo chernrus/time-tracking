@@ -40,26 +40,31 @@ export const helper = (function(){
 
   function showModal(str) {
     const modal = document.createElement('div'),
-      text = document.createElement('p');
+      text = document.createElement('p'),
+      info = document.createElement('span');
 
     modal.className = 'clipboard-modal';
     text.className = 'clipboard-modal__text';
-    text.innerText = `${str} added in clipboard`;
+    text.innerText = `${str}`;
+    info.innerText = ' added in clipboard';
 
     modal.appendChild(text);
+    modal.appendChild(info);
 
-    modal.style.position = 'absolute';
+    modal.style.position = 'fixed';
     modal.style.bottom = '0';
     modal.style.left = '0';
     modal.style.right = '0';
     modal.style.margin = 'auto';
+    modal.style.width = '100%';
+    modal.style.zIndex = '100';
+    modal.style.backgroundColor = '#111';
+    modal.style.color = '#fff';
+    modal.style.textAlign = 'center';
 
     text.style.margin = '0 auto';
-    text.style.width = '200px';
+    text.style.overflow = 'hidden';
     text.style.padding = '10px';
-    text.style.backgroundColor = '#111';
-    text.style.color = '#fff';
-    text.style.textAlign = 'center';
 
     document.body.appendChild(modal);
 
