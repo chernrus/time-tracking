@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import '../styles/SideMenu.css';
 
 class SideMenu extends Component {
@@ -20,7 +21,6 @@ class SideMenu extends Component {
 
     const mainContainer = this.props.main.current,
       mainHeader = this.props.header.current;
-
 
     switch (hamburgerClassName) {
       case 'hamburger':
@@ -82,3 +82,13 @@ class SideMenu extends Component {
 }
 
 export default SideMenu;
+
+
+SideMenu.propTypes = {
+  main: PropTypes.shape({
+    current: PropTypes.node
+  }),
+  header: PropTypes.shape({
+    current: PropTypes.node
+  }),
+};

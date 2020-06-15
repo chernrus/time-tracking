@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import '../styles/MainHeader.css';
 
-class SideMenu extends Component {
+class MainHeader extends Component {
 
   render() {
     const { title } = this.props;
@@ -13,4 +14,8 @@ class SideMenu extends Component {
   }
 }
 
-export default SideMenu;
+export default MainHeader;
+
+MainHeader.propTypes = {
+  title: PropTypes.string
+};

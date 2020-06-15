@@ -1,13 +1,17 @@
-.task__name {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 3px;
+.autogrow-textarea {
+  overflow: hidden;
+  padding: 0;
+  outline: none;
   resize: none;
+  height: auto;
+  width: 100%;
+  /* border: none; */
+  background-color: inherit;
   font-size: 16px;
   line-height: 18px;
-  overflow: hidden;
-  height: auto;
-  padding: 5px;
-  border-bottom: 1px solid #546e7a;
-  box-shadow: 0px 4px 10px -8px black;
+  font-weight: normal;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",  "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  /* margin: 0 10px; */
 }

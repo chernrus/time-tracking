@@ -26,4 +26,5 @@
 .calculated-list__task-time,
 .calculated-list__task-name {
   cursor: pointer;
+  border: none;
 }

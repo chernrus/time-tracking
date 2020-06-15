@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Task.css';
 import uuidv4 from '../uuid';
 import Time from './Time';
+import PropTypes from 'prop-types';
 import AutogrowTextarea from './AutogrowTextarea';
 
 class Task extends Component {
@@ -46,10 +47,9 @@ class Task extends Component {
     let hours = parseInt(endArr[0]) - parseInt(startArr[0]),
       minutes = parseInt(endArr[1]) - parseInt(startArr[1]);
 
-    hours = (hours < 0) ? hours + 24 : hours;
     hours = (minutes < 0) ? hours - 1 : hours;
     minutes = (minutes < 0) ? minutes + 60 : minutes;
-
+    hours = (hours < 0) ? hours + 24 : hours;
     return `${(hours > 9 ? hours : (`0${hours}`))}:${(minutes > 9 ? minutes : (`0${minutes}`))}`;
   }
 
@@ -128,12 +128,13 @@ class Task extends Component {
 
     return (
       <div className="task">
-        <input type="time" className="task__time-input startTime"
+        <input type="time" className="task__time-input startTime" title="Start time"
           name="start"
           value={ start }
           onChange={ this.inputHandler }/>
         <button type="button" className="task__time-button startBtn far fa-clock"
           name="start time button"
+          aria-label="Start time"
           onClick={ this.updateStart }></button>
         <span>&mdash;&nbsp;</span>
         <input type="time" className="task__time-input endTime"
@@ -142,14 +143,17 @@ class Task extends Component {
           onChange={ this.inputHandler }/>
         <button type="button" className="task__time-button endBtn far fa-clock"
           name="end time button"
+          aria-label="End time"
           onClick={ this.updateEnd }></button>
         <AutogrowTextarea
+          className = "task__name"
           value={ name }
           onChangeValue={this.changeName}/>
         <span className="task__period"
           onClick={ this.copyTime }>{timeStr}</span>
         <button type="button" className="task__delete-button deleteBtn far fa-trash-alt"
           name="delete task button"
+          aria-label="Delete task"
           onClick={ this.removeTask }></button>
       </div>
     );
@@ -158,11 +162,16 @@ class Task extends Component {
 
 export default Task;
 
-// <textarea type="text" className="task__name-input taskInput"
-//   name="name"
-//   value={ name }
-//   onChange={this.inputHandler}
-//   ref={this.refNameElement}
-//   maxLength="60"
-//   rows="1"
-//   cols="26"/>
+
+Task.propTypes = {
+  taskData: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    start: PropTypes.string,
+    end: PropTypes.string,
+    period: PropTypes.string
+  }),
+  onChange: PropTypes.func,
+  onRemove: PropTypes.func,
+  onCopy: PropTypes.func
+};

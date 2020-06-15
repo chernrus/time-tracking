@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CalculateButton extends Component {
-  constructor(props) {
-    super(props);
 
-    this.onCalculate = this.onCalculate.bind(this);
-  }
-
-  onCalculate() {
+  onCalculate = () => {
     this.props.onCalculate();
   }
 
@@ -24,3 +20,7 @@ class CalculateButton extends Component {
 }
 
 export default CalculateButton;
+
+CalculateButton.propTypes = {
+  onRemoveAll: PropTypes.func
+};

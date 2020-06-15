@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Task from './Task';
+import PropTypes from 'prop-types';
 import '../styles/TaskList.css';
 
 class TaskList extends Component {
@@ -33,3 +34,11 @@ class TaskList extends Component {
 }
 
 export default TaskList;
+
+
+TaskList.propTypes = {
+  data: PropTypes.array,
+  onChange: PropTypes.func,
+  onRemove: PropTypes.func,
+  onCopy: PropTypes.func
+};
