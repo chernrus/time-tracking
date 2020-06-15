@@ -8,7 +8,7 @@ input {
 .task__time-input {
   -moz-appearance: textfield;
   -webkit-appearance: textfield;
-  width: 100px;
+  width: 200px;
   text-align: center;
 }
 
